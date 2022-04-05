@@ -1,0 +1,34 @@
+#using python language to solve the 3d-printing
+T=int(input())
+for t in range(1,T+1):
+    c, m, y, k = [], [], [], []
+    for _ in range(3):
+        lis=list(map(int,input().split()))
+        c.append(lis[0])
+        m.append(lis[1])
+        y.append(lis[2])
+        k.append(lis[3])
+
+    max=1000000
+    mini=[]
+    mini.append(min(c))
+    mini.append(min(m))
+    mini.append(min(y))
+    mini.append(min(k))
+    if(min(c)+min(y)+min(m)+min(k))<max:
+        print("Case #",t,": IMPOSSIBLE", sep='')
+    if(min(c)+min(y)+min(m)+min(k))==max:
+        print("Case #",t,": ",sep='',end='')
+        print(*mini)
+    if (min(c) + min(y) + min(m) + min(k)) > max:
+        p=(sum(mini))-max
+        for i in range(4):
+            if p>=mini[i]:
+                val = mini[i]
+                mini[i]= 0
+                p= p - val
+            if p<mini[i]:
+                mini[i]=mini[i]-p
+                p = 0
+        print("Case #",t,": ",sep='',end='')
+        print(*mini)
