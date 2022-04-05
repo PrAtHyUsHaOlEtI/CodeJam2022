@@ -1,0 +1,13 @@
+#using python to solve d1000000
+T=int(input())
+for _ in range(1,T+1):
+    n=int(input())
+    dieSides=[int(x) for x in input().split(" ")]
+    dieSides.sort()
+    j=0
+    for i in range(n):
+        j=j+1
+        if dieSides[i]<j:
+            j=j-1
+    print("Case #",_,": ",sep='',end='')
+    print(j)
