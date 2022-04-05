@@ -1,0 +1,43 @@
+// using c language to solve punching cards
+#include<stdio.h>
+int main()
+{
+    int R,C,T,r,c;
+    int j=0, k=0;
+    char arr[1000][1000];
+    scanf("%d",&T);
+    for(int i=1;i<=T;i++)
+    {
+        scanf("%d %d",&r,&c);
+        R=(2*r)+1;C=(2*c)+1;
+        for(j=0;j<R;j++)
+        {
+            for(k =0;k<C;k+=2)
+            {
+                if (j%2==0)
+                {
+                    arr[j][k]= '+';
+                    arr[j][k+1]='-';
+                }
+                if (j%2!=0)
+                {
+                    arr[j][k]='|';
+                    arr[j][k+1]='.';
+                }
+                arr[0][0]='.';arr[1][0]='.' ;arr[0][1]='.' ;arr[1][1]='.' ;
+
+            }
+        }
+        printf("Case #%d:\n",i);
+         for(j=0;j<R;j++)
+         {
+             for(k=0;k<C;k++)
+             {
+                 printf("%c",arr[j][k]);
+                 arr[j][k]=0;
+             }
+             printf("\n");
+         }
+    }
+    return 0;
+}
